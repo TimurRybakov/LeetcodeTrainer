@@ -28,7 +28,7 @@ ListNode l2 = ArrayToListNode(arr2);
 var result = AddTwoNumbers(l1, l2);
 
 Console.Write('[');
-ListNode node = result;
+ListNode? node = result;
 while (node is not null)
 {
     if (node != result)
@@ -43,7 +43,7 @@ Console.ReadLine();
 
 ListNode ArrayToListNode(int[] array)
 {
-    ListNode result = null;
+    ListNode? result = null;
 
     for (int i = array.Length - 1; i >= 0; i--)
     {
@@ -121,8 +121,10 @@ ListNode AddTwoNumbers(ListNode l1, ListNode l2)
 public class ListNode
 {
     public int val;
-    public ListNode next;
-    public ListNode(int val = 0, ListNode next = null)
+
+    public ListNode? next;
+
+    public ListNode(int val = 0, ListNode? next = null)
     {
         this.val = val;
         this.next = next;
