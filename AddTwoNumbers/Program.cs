@@ -1,4 +1,4 @@
-﻿/*
+/*
 2. Add Two Numbers
 
 You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
@@ -19,51 +19,50 @@ Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,0,1]
 
  */
-int[] l1 = [9, 9, 9, 9, 9, 9, 9];
-int[] l2 = [9, 9, 9, 9];
+using LeetcodeTrainer.Common;
 
-var result = Problem.AddTwoNumbers(l1, l2);
+namespace AddTwoNumbers;
 
-Console.Write('[');
-ListNode? node = result;
-while (node is not null)
+internal class Program
 {
-    if (node != result)
-        Console.Write(',');
-    Console.Write(node.val);
+    private static void Main(string[] args)
+    {
+        int[] l1 = [9, 9, 9, 9, 9, 9, 9];
+        int[] l2 = [9, 9, 9, 9];
 
-    node = node.next;
+        var result = Problem.AddTwoNumbers(l1.ToListNode(), l2.ToListNode());
+
+        Console.Write(result.ToString());
+
+        Console.ReadLine();
+    }
 }
-Console.Write(']');
-
-Console.ReadLine();
 
 public static class Problem
 {
-    public static ListNode AddTwoNumbers(int[] l1, int[] l2)
+    public static ListNode AddTwoNumbers(ListNode? l1, ListNode? l2)
     {
-        return AddTwoNumbers(ArrayToListNode(l1), ArrayToListNode(l2));
-    }
-    public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
-    {
-        ListNode _l1 = l1;
-        ListNode _l2 = l2;
+        ListNode? _l1 = l1;
+        ListNode? _l2 = l2;
 
         Queue<int> queue1 = new(100);
         Queue<int> queue2 = new(100);
 
-        queue1.Enqueue(_l1.val);
-        queue2.Enqueue(_l2.val);
+        if (_l1 is not null)
+            queue1.Enqueue(_l1.val);
 
-        while (_l1.next is not null || _l2.next is not null)
+        if (_l2 is not null)
+            queue2.Enqueue(_l2.val);
+
+        while (_l1?.next is not null || _l2?.next is not null)
         {
-            if (_l1.next is not null)
+            if (_l1?.next is not null)
             {
                 _l1 = _l1.next;
                 queue1.Enqueue(_l1.val);
             }
 
-            if (_l2.next is not null)
+            if (_l2?.next is not null)
             {
                 _l2 = _l2.next;
                 queue2.Enqueue(_l2.val);
@@ -107,43 +106,5 @@ public static class Problem
         }
 
         return result;
-    }
-
-    public static int[] ToArray(this ListNode? node)
-    {
-        var result = new List<int>();
-
-        while (node is not null)
-        {
-            result.Add(node.val);
-            node = node.next;
-        }
-
-        return result.ToArray();
-    }
-
-    private static ListNode ArrayToListNode(int[] array)
-    {
-        ListNode? result = null;
-
-        for (int i = array.Length - 1; i >= 0; i--)
-        {
-            result = new ListNode(array[i], result);
-        }
-
-        return result ?? new ListNode();
-    }
-}
-
-public record ListNode
-{
-    public int val;
-
-    public ListNode? next;
-
-    public ListNode(int val = 0, ListNode? next = null)
-    {
-        this.val = val;
-        this.next = next;
     }
 }

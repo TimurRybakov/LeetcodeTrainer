@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AddTwoNumbers\AddTwoNumbers.csproj" />
+    <ProjectReference Include="..\MergeTwoSortedLists\MergeTwoSortedLists.csproj" />
   </ItemGroup>
 
   <ItemGroup>

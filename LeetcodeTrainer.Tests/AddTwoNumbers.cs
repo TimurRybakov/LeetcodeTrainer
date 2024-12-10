@@ -1,7 +1,11 @@
+using AddTwoNumbers;
+
+using LeetcodeTrainer.Common;
+
 namespace Tests;
 
 [TestClass]
-public class AddTwoNumbers
+public sealed class AddTwoNumbers
 {
     [TestMethod]
     public void Case1()
@@ -12,7 +16,7 @@ public class AddTwoNumbers
         int[] expected = [7, 0, 8];
 
         //Act
-        var result = Problem.AddTwoNumbers(l1, l2).ToArray();
+        var result = Problem.AddTwoNumbers(l1.ToListNode(), l2.ToListNode()).ToArray();
 
         //Assert
         CollectionAssert.AreEqual(result, expected);
@@ -27,7 +31,7 @@ public class AddTwoNumbers
         int[] expected = [0];
 
         //Act
-        var result = Problem.AddTwoNumbers(l1, l2).ToArray();
+        var result = Problem.AddTwoNumbers(l1.ToListNode(), l2.ToListNode()).ToArray();
 
         //Assert
         CollectionAssert.AreEqual(result, expected);
@@ -42,7 +46,7 @@ public class AddTwoNumbers
         int[] expected = [8, 9, 9, 9, 0, 0, 0, 1];
 
         //Act
-        var result = Problem.AddTwoNumbers(l1, l2).ToArray();
+        var result = Problem.AddTwoNumbers(l1.ToListNode(), l2.ToListNode()).ToArray();
 
         //Assert
         CollectionAssert.AreEqual(result, expected);
